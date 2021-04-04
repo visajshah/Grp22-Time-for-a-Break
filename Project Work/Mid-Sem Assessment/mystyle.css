@@ -1,0 +1,272 @@
+.about {
+  position: absolute;
+  width: 254px;
+  height: 47px;
+  left: 870px;
+  top: 0px;
+  /* text-align: center; */
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 45px;
+  line-height: 40px;
+
+  color: #1d5218;
+}
+.st1-box {
+  position: absolute;
+  width: 286px;
+  height: 86px;
+  left: 11px;
+  top: 208px;
+  background: #deaf55;
+  border: 3px solid #f56363;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 52px;
+}
+.st2-box {
+  position: absolute;
+  width: 286px;
+  height: 86px;
+  left: 11px;
+  top: 304px;
+
+  background: #deaf55;
+  border: 3px solid #f56363;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 52px;
+}
+.st3-box {
+  position: absolute;
+  width: 286px;
+  height: 86px;
+  left: 11px;
+  top: 404px;
+
+  background: #deaf55;
+  border: 3px solid #f56363;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 52px;
+}
+.st4-box {
+  position: absolute;
+  width: 286px;
+  height: 86px;
+  left: 11px;
+  top: 502px;
+
+  background: #deaf55;
+  border: 3px solid #f56363;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 52px;
+}
+.st5-box {
+  position: absolute;
+  width: 286px;
+  height: 86px;
+  left: 11px;
+  top: 603px;
+
+  background: #BCFF2F;
+  border: 3px solid #f56363;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 52px;
+}
+.st6-box {
+  position: absolute;
+  width: 286px;
+  height: 86px;
+  left: 11px;
+  top: 702px;
+
+  background: #deaf55;
+  border: 3px solid #f56363;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 52px;
+}
+.Schedule {
+  cursor: pointer;
+  position: absolute;
+  width: 254px;
+  height: 47px;
+  left: 110px;
+  top: 197px;
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+  color: #393eac;
+}
+.Schedule:hover{
+  text-shadow: 3px 0px 3px #f56363;
+}
+.Resources:hover{
+  text-shadow: 3px 0px 3px #f56363;
+}
+.Settings:hover{
+  text-shadow: 3px 0px 3px #f56363;
+}
+.Reports:hover{
+  text-shadow: 3px 0px 3px #f56363;
+}
+.Aboutus:hover{
+  text-shadow: 3px 0px 3px #f56363;
+}
+.Back:hover{
+  text-shadow: 3px 0px 3px #f56363;
+}
+
+.Resources {
+  position: absolute;
+  width: 360px;
+  height: 68px;
+  left: 105px;
+  top: 291px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+
+  color: #393eac;
+  cursor: pointer
+
+}
+.Settings {
+  position: absolute;
+  width: 360px;
+  height: 68px;
+  left: 117px;
+  top: 388px;
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+  color: #393eac;
+  cursor: pointer;
+}
+.Reports {
+  position: absolute;
+  width: 360px;
+  height: 68px;
+  left: 117px;
+  top: 492px;
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+  color: #393eac;
+  cursor: pointer
+;
+}
+.Aboutus {
+  position: absolute;
+  width: 360px;
+  height: 68px;
+  left: 117px;
+  top: 592px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+
+  color: #393eac;
+  cursor: pointer
+
+}
+.Back {
+  position: absolute;
+  width: 360px;
+  height: 68px;
+  left: 141px;
+  top: 691px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+
+  color: #393eac;
+  cursor: pointer
+
+}
+.img1 {
+  position: absolute;
+  left: 2.71%;
+  right: 94.65%;
+  top: 31.5%;
+  bottom: 65.88%;
+  height: 30px;
+  width: 30px;
+  background-color: #deaf55;
+}
+.Schedule-icon{
+position: absolute;
+width: 38px;
+height: 38px;
+left: 39px;
+top: 233px;
+}
+.Resources-icon{
+  position: absolute;
+width: 38px;
+height: 38px;
+left: 39px;
+top: 331px;
+}
+.Settings-icon{
+position: absolute;
+width: 38px;
+height: 38px;
+left: 39px;
+top: 427px;
+}
+.Reports-icon{
+  position: absolute;
+width: 38px;
+height: 38px;
+left: 43px;
+top: 531px;
+}
+.Aboutus-icon{
+  position: absolute;
+width: 38px;
+height: 38px;
+left: 39px;
+top: 629px;
+
+}
+.Back-icon{ 
+position: relative;
+width: 38px;
+height: 38px;
+left: 35px;
+top: 720px;
+}
+.aboutus-text{
+  position: absolute;
+  top: 197px;
+  left:650px;
+  width:600px;
+  text-align: center;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 44px;
+  color: #1d5218;
+}
