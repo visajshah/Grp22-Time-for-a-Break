@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="mystyle_schedule.css" />
+</head>
+
+<body style="background-image: url('background.png')">
+    <div class="report">
+        <p id="">Schedule</p>
+    </div>
+    <div class="st1-box"></div>
+    <div class="st2-box"></div>
+    <div class="st3-box"></div>
+    <div class="st4-box"></div>
+    <div class="st5-box"></div>
+    <div class="st6-box"></div>
+    <div class="st7-box"></div>
+    <div class="st8-box"></div>
+    <div class="st9-box"></div>
+    <div class="st10-box"></div>
+    <div class="st11-box"></div>
+    <div class="st12-box"></div>
+    <div class="st13-box"></div>
+    <p class="Schedule">Schedule</p>
+    <p class="Resources">Resources</p>
+    <p class="Settings">Settings</p>
+    <p class="Reports">Reports</p>
+    <p class="Aboutus">About Us</p> 
+    <p class="Back">Back</p>
+    <form name="scheduleForm" onsubmit="sendItem(); return false">
+        <p class="shortbreakduration">Short Break Duration</p>
+        <input type="number" class="inputshortduration" name="shortduration" placeholder="in mins" value="10" min="2" required/><br />
+        <p class="longbreakduration">Long Break Duration</p>
+        <input type="number" class="inputlongduration" name="longduration" placeholder="in mins" value="10" min="2" required/><br />
+        <p class="shortbreakfrequency">Short Break Frequency</p>
+        <input type="number" class="inputshortfrequency" name="shortfrequency" placeholder="in mins" value="10" min="2" required/><br />
+        <p class="longbreakfrequency">Long Break Frequency</p>
+        <input type="number" class="inputlongfrequency" name="longfrequency" placeholder="in mins" value="10" min="2" required/><br />
+        <p class="strict">Strict Mode</p>
+        <div class="container">
+            <div class="round">
+                <input type="checkbox" id="checkbox" />
+                <label for="checkbox"></label>
+            </div>
+        </div>
+        <p class="postduration">Postponement Duration</p>
+        <input type="number" class="inputpostduration" name="postduration" placeholder="in mins" value="10" min="2" required/><br />
+        <p class="postlimit">Postponement Limit</p>
+        <input type="number" class="inputpostlimit" name="postlimit" placeholder="in nums" value="10" min="2" required/><br />
+        <button class="submitForm" type="submit">Submit</button>
+    </form>
+    <p class="quote1">Rest your mind.</p>
+    <p class="quote2">Calm your heart.</p>
+    <img class="img1" src="today_black_24dp.svg" alt=":(" />
+    <img class="img2" src="assistant-black-18dp.svg" alt=":(" />
+    <img class="img3" src="settings-black-18dp.svg" alt=":(" />
+    <img class="img4" src="report-black-18dp.svg" alt=":(" />
+    <img class="img5" src="groups-black-18dp.svg" alt=":(" />
+    <img class="img6" src="arrow_back_black_24dp.svg" alt=":(" />
+    <img class="img7" src="Union.png" alt=":(" />
+    <script src="schedule.js"></script>
+</body>
+</html>
