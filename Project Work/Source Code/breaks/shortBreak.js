@@ -1,6 +1,20 @@
 const { ipcRenderer, remote } = require("electron")
 
 const skipBtn = document.getElementById("skipBtn")
+skipBtn.disabled = false;
+skipBtn.style.display = "none";
+
+let tmp_totalshortbreak = localStorage.getItem('currtotalshortbreak');
+let currtotalshortbreak = 0;
+if(tmp_totalshortbreak)
+{
+    currtotalshortbreak = parseInt(tmp_totalshortbreak);
+}
+currtotalshortbreak = currtotalshortbreak +1;
+localStorage.setItem('currtotalshortbreak',currtotalshortbreak);
+
+skipBtn.style.display = "block";
+
 
 function randomidea() {
     let defaultIdeas = ["Go grab a glass of water.",
