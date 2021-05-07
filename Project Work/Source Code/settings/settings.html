@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="settings.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+</head>
+
+<body>
     <input type="checkbox" id="check">
     <label for="check">
       <i class="fas fa-bars" id="btn"></i>
       <i class="fas fa-times" id="cancel"></i>
     </label>
     <div class="sidebar">
-    <header>Time App</header>
-  <ul>
-<li><a href="#"><i class="fas fa-clock"></i>Schedule</a></li>
-<li><a href="#"><i class="fas fa-link"></i>Resources</a></li>
-<li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
-<li><a href="#"><i class="fas fa-calendar-week"></i>Reports</a></li>
-<li><a href="#"><i class="far fa-question-circle"></i>About Us</a></li>
-<li><a href="#"><i class="fas fa-chevron-circle-left"></i>Back</a></li>
-</ul>
-</div>
-<!--  -->
-<section>
-    <div class="notif">
-        <p>Notification</p>
-        <label class="switch">
-            <input type="checkbox" checked>
-            <span class="slider round"></span>
-        </label>
+        <header>Time App</header>
+        <ul>
+            <li><a href="../Schedule/schedule.html"><i class="fas fa-clock"></i>Schedule</a></li>
+            <li><a href="../Resources/Music/music.html"><i class="fas fa-music"></i>Music</a></li>
+            <li><a href="../Resources/Idea/idea.html"><i class="fas fa-pen-nib"></i>Ideas</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+            <li><a href="../Report/report.html"><i class="fas fa-calendar-week"></i>Reports</a></li>
+            <li><a href="../About/About.html"><i class="far fa-question-circle"></i>About Us</a></li>
+            <li><a href="../home/home.html"><i class="fas fa-chevron-circle-left"></i>Home</a></li>
+        </ul>
     </div>
-    <div class="notif">
-        <p style="margin-right: 15rem;">Do not Disturb</p>
-        <label class="switch">
-            <input type="checkbox" checked>
-            <span class="slider round"></span>
-        </label>
-    </div>
-    <div class="notif">
-        <p style="margin-right: 10rem;">Notification Audio</p>
-        <input type="range" min="1" max="100" value="50">
-    </div>
-</section>
+    <!--  -->
+    <section>
+        <div class="notif">
+            <p>Notification</p>
+            <label class="switch">
+                <input type="checkbox" id="notification">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="notif">
+            <p style="margin-right: 20rem;">Strict Mode</p>
+            <label class="switch">
+                <input type="checkbox" id="strictMode" >
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </section>
+    <script src="settings.js"></script>
+</body>
 
-  </body>
 </html>
