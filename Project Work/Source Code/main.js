@@ -11,6 +11,26 @@ const Menu = electron.Menu
 const powerMonitor = electron.powerMonitor;
 
 let win, worker = null, menu, tray = null, breakWin = null, flg, lockScreen
+let template = [
+    {
+        label: 'Quit The App',
+        click: function() {
+            worker.close();
+            worker = null;
+            if (win) {
+                win.close();
+            }
+        }
+    },
+    {
+        label: 'show home window',
+        click: function() {
+            if (win) {
+                win.show();
+            }
+        }
+    }
+]
 
 app.on('ready', () => {
     win = new BrowserWindow({
@@ -36,6 +56,12 @@ app.on('ready', () => {
     win.removeMenu()
 
     ipcMain.on('Start The Session', () => {
+            if (tray===null) {
+                tray = new Tray(iconPath);
+                menu = Menu.buildFromTemplate(template);
+                tray.setContextMenu(menu);
+                tray.setToolTip('Time Break App');
+            }
 
             worker = new BrowserWindow({
                 show: false,//updated
@@ -58,7 +84,7 @@ app.on('ready', () => {
                     worker = null
                 }
             })
-            
+
             worker.on('closed',async ()=>{
 
                 console.log("worker closing");
@@ -101,7 +127,6 @@ app.on('ready', () => {
                     await localStorage.setItem('prev_totalshortbreak',prev_totalshortbreak);
                     await localStorage.setItem('prev_totallongbreak',prev_totallongbreak);
                 });
-            
 
         ipcMain.on('your short break starts', (event, strict_flg)=>{
             if (breakWin) {
@@ -167,4 +192,81 @@ app.on('ready', () => {
             }
         })
     })
+  
+    powerMonitor.on('suspend', () => {
+        console.log('The system is going to sleep');
+        worker.close()
+        // tray.destroy()
+    });
+    
+    powerMonitor.on('lock-screen', () => {
+        console.log('The system is about to be locked');
+        lockScreen = 0;
+        worker.webContents.send('system-lock');
+
+        while (lockScreen===0) {}
+        ipcMain.on('u-may-procedd-with-lock', ()=>{lockScreen = 1});
+        if (worker) {
+            worker.close()
+            worker = null
+        }
+        console.log("storing-is-done-for-lockscreen");
+        // tray.destroy()
+    });
 })
+ipcMain.on('message-from-scheduler',(event,arg)=>{
+    if (worker) {
+        worker.webContents.send('scheduler-to-timer',arg);
+    }
+});
+
+ipcMain.on('settings has been changed to Main',(event)=>{
+    console.log("updated settings has arrived in main");
+    if (worker) {
+        worker.webContents.send('settings-has-been-changed-to-worker');
+    }
+});
+
+ipcMain.on('message-on-music-channel',(event,arg)=>{
+    dialog.showOpenDialog({
+        filters: [{
+            name: 'Music files',
+            extensions: ['mp3', 'wav'],
+        }, ],
+    }).then((results)=>{
+        if (results.filePaths[0] === undefined) {
+            console.log('File undefined');
+        } else {
+            saveFile(results);
+        }
+    });
+})
+
+async function saveFile(results){
+            let arr1 = await localStorage.getItem('arr');
+            arr2 = JSON.parse(arr1);
+            let arr1Path = await localStorage.getItem('arrPath');
+            let arr2Path = JSON.parse(arr1Path);
+
+            if (arr2 === null) {
+                arr2 = ['Audio.mp3'];
+            }
+            if (arr2Path === null) {
+                arr2Path = ['Audio.mp3'];
+            }
+            console.log('File Defined');
+    
+            var fileName = results.filePaths[0].replace(/^.*[\\\/]/, '');
+            var filePath = results.filePaths[0].replace(/\\/g,'/');
+
+            for (let i = 0; i < arr2.length; i++) {
+                if (arr2[i] === fileName) {
+                    return;
+                }
+            }
+            arr2.push(fileName);
+            arr2Path.push(filePath);
+            await localStorage.setItem('arr', JSON.stringify(arr2));
+            await localStorage.setItem('arrPath', JSON.stringify(arr2Path));
+            win.webContents.send('piggy-back-from-main',123);
+}
