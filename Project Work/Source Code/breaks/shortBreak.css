@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
+body {
+  background-image: url('../images/nature_bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 95vh;
+  font-family: 'Baloo 2', cursive;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  align-items: center;
+  color: white;
+}
+
+.btn{
+  color: #fff;
+  border: none;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.0rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  cursor: pointer;
+  border-radius: .3rem;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  outline: none;
+  }
+  
+  .btn-primary{
+    /* background: #50A7FF; */
+    background: rgb(136, 55, 1);
+    box-shadow: 0 0 2.5rem white;
+  }
+  
+  .btn-primary:hover{
+    box-shadow: 0 0 .5rem #5bff4c,
+                0 0 2.5rem #5bff4c,
+                0 0 5rem #5bff4c,
+                0 0 10rem #5bff4c;
+  }
+  
+  .btn-success{
+    background: #4e992b;
+    box-shadow: 0 0 2.5rem #105f4b;
+  }
+  
+  .btn-success:hover{
+    box-shadow: 0 0 .5rem #03D29F,
+                0 0 2.5rem #03D29F,
+                0 0 5rem #03D29F,
+                0 0 10rem #03D29F;
+  }
+
+  .break_box {
+    /* border: 2px solid white; */
+    width: 100vw;
+    position: relative;
+    top: 3rem;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resources {
+    width: 100vw;
+    margin: auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3.7rem;
+    color: rgba(245, 229, 27, 1);
+    font-weight: 800;
+    margin-bottom: 5rem;
+  }
+
+  #Music {
+    display: block;
+    width: 13%;
+    margin: auto;
+    margin-top: 4rem;
+    font-size: 1rem;
+    padding: 0.7rem 1.4rem;
+  }
+
+  .idea_text {
+    width: 100vw;
+    text-align: center;
+  }
+
+  h2 {
+    color: #ffffff;
+    font-size: 2.6rem;
+    letter-spacing: 0.2rem;
+    font-family: 'Pangolin', cursive;
+    text-shadow: 1.2px 1.2px rgb(22, 21, 2);
+  }
+
+  #skipBtn {
+    margin-top: 6rem;
+  }
