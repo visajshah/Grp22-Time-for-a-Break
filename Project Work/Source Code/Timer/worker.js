@@ -9,31 +9,88 @@ var skip = 0;           // intialize skip with zero
 let updated = false;    // intialize updated varibale to false
 let noOfSkips = 0;     // Total number of skip during this session
 
-function sendMessage(message) {
-    // Send appropriate break message to main function
-	ipcRenderer.send('message-for-break',message);
+let t1 = 5*micTosec, t2 = 2*micTosec;
+
+var notifi_flg = true, strict_flg = false;
+
+function updateSetting() {
+
+
+    if (window.localStorage.getItem('notifi')) {
+        var notifi_tmp = window.localStorage.getItem('notifi');    
+        if(notifi_tmp)
+        {
+            console.log("condition",notifi_tmp === "true");
+            console.log(notifi_tmp,typeof(notifi_tmp))
+            if(notifi_tmp === "true")
+            {
+                notifi_flg = true;
+            }
+            else{
+                notifi_flg = false;
+            }
+        }
+    }
+    if (window.localStorage.getItem('strict')) {
+        var strict_tmp = window.localStorage.getItem('strict');
+        if(strict_tmp)
+        {
+            if(strict_tmp === "true")
+            {
+                strict_flg= true;
+            }
+            else{
+                strict_flg = false;
+            }
+        }
+    }    
 }
-function timer(message, duration) {
-	return new Promise((resolve) => {
-            let timeVar = setTimeout(() => {
-                resolve(sendMessage(message));
-            }, duration);
-	});
+
+function sendMessage(message) {
+    console.log("type of strict flg =>", typeof(strict_flg), strict_flg);
+	ipcRenderer.send(message,strict_flg);
 }
 
 function mytimer(message, duration) {
 
-    // create time of specific duration and then it will send messege to main function
     let startTime = Date.now();
-    let endTime  = startTime+duration;
-    skip=0;  // reinitialize skip variable with zero 
+    let endTime  = startTime + duration;
+    let flg = ((message==="your short break ends") || (message==="your long break ends"));
+    let flg1 = (message==="your short break starts") || (message==="your long break starts");
+    let notif_done = false, terminated = false;
+    skip=0;
+
+    console.log("From Timmer")
+    console.log(startTime,endTime,duration,t1,t2);
+
     return new Promise((resolve) => {
         let tmp = setInterval(()=>{
-            if(Date.now()>=endTime || skip==1 || updated)
-            {
-                resolve(sendMessage(message));
-                clearInterval(tmp);
-            }
+            let notification;
+                if (Date.now()>=endTime-t1 && flg1 && !notif_done)
+                {
+                    console.log("notification start")
+                    // let msg = "Start Notif";
+                    notif_done = true;
+                    // resolve(sendMessage(msg));
+                    console.log("notifiction timer flag",notifi_flg);
+                    if (notifi_flg) {
+                        notification = new Notification('Break Reminder', {
+                            body: 'Your Next break will start in 5 seconds',
+                        })
+                    }
+                }
+
+                if (Date.now()>=endTime-t2 && flg1 && notif_done && !terminated)
+                {
+                    terminated = true;
+                }
+
+
+                if(Date.now()>=endTime || updated || skip==1)
+                {
+                    resolve(sendMessage(message));
+                    clearInterval(tmp);
+                }
         },100);
     });
 }
