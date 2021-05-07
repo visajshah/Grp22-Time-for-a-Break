@@ -1,113 +1,106 @@
-let{remote}=require('electron')
-let mainWindow = remote.getCurrentWindow();
-const fs = require('fs');
-const { inherits } = require('util');
+let defaultIdeas = ["Go grab a glass of water.",
+    "Slowly look all the way left, then right.",
+    "Slowly look all the way up, then down.",
+    "Close your eyes and take few deep breaths.",
+    "Stand from your chair and stretch.",
+    "Close your eyes and count your breaths.",
+    "Take a moment to smile at being alive."
+];
 
+let IdeasArray = new Array();
+IdeasArray = JSON.parse(localStorage.getItem("Ideas"));
 
+if(IdeasArray === null){
+    IdeasArray = defaultIdeas;
+}
 
-var ideas_index = 0;
-var ideasArray = new Array();
+let list = document.getElementById("ideaList");
+
 function checkInputText(value,msg) {
-    if(value == null || value == ""){
+    if(value === null || value === ""){
         alert(msg);
         return true;
     }
     return false;
 }
-function init () {
-    fs.readFileSync('./ideas.json',fileData =>{
-        ideasArray = JSON.parse(fileData);
-    })
-    console.log(ideasArray);
-    for(var i=0;i<ideasArray.length;i++){
-        preoloadaddIdeasToPage(ideasArray[i].idea);
-    }
-}
-function saveJSON() {
-    var IdeasJSON = JSON.stringify(ideasArray);
-    fs.writeFile('./ideas.json', IdeasJSON, err => {
-        if (err) {
-            console.log('Error writing file', err)
-        } else {
-            console.log('Successfully wrote file')
+
+function Delete(value){
+    let index = -1;
+    for(i = 0;i<IdeasArray.length ; i+=1){
+        if(IdeasArray[i] === value){
+            index = i;
+            break;
         }
-    })
-}
-function removeItemOnce(value) {
-    const index = ideasArray.findIndex(x => x.idea === value);
-    if (index !== undefined) ideasArray.splice(index, 1);
-    saveJSON();
-}
-function preoloadaddIdeasToPage(idea) {
-    var table = document.getElementById("ideaList");
-    var tr = document.createElement("tr");
-
-    ideas_index++;
-
-    tr.id = "idea-" + ideas_index;
-    console.log(ideas_index);
-    //var idea = document.getElementById("htmlIdea").value;
-
-    tr.innerHTML = "\
-    <td><input name='select-row' type='checkbox' value ='"+ ideas_index +"'></td>\
-    <td>"+ idea + "<td>\
-    <td><button onclick = 'removeIdea("+ideas_index+");'>X</button></td>";
-    table.appendChild(tr);
-}
-
-function addIdeasToPage() {
-    var table = document.getElementById("ideaList");
-    var tr = document.createElement("tr");
-
-    ideas_index++;
-
-    tr.id = "idea-" + ideas_index;
-    //console.log(ideas_index);
-    var idea = document.getElementById("htmlIdea").value;
-
-    tr.innerHTML = "\
-    <td><input name='select-row' type='checkbox' value ='"+ ideas_index +"'></td>\
-    <td>"+ idea + "<td>\
-    <td><button onclick = 'removeIdea("+ideas_index+");'>X</button></td>";
-    table.appendChild(tr);
-    ideasArray.push({"idea":idea});
-    saveJSON();
-}
-
-function removeIdea(index) {
-    // Get the element.
-    var row = document.getElementById('idea-' + index);
-    var value = row.cells[1].innerText;
-    console.log(value);
-    //var value = document.querySelector('#idea'+index).value;
-
-    // If we were able to find a row matching that id.
-    if (row) {
-        // Access row's parent node (tbody) and remove the row.
-        row.parentNode.removeChild(row);
-        removeItemOnce(value);
-        
+    }
+    if(index != -1){
+        list.removeChild(list.childNodes[index]);
+        IdeasArray.splice(index,1);
+        localStorage.setItem("Ideas",JSON.stringify(IdeasArray));
     }
 }
 
-function removeSelectedIdeas(params) {
-    var rowsToRemove = document.querySelectorAll('input[name=select-row]:checked');
+function init () {
+    for(i = 0 ; i < IdeasArray.length ; i+=1){
+        let tmp = document.createElement("div");
+        tmp.id = "idea";
+        let nm = document.createElement("p");
+        nm.innerHTML = IdeasArray[i];
+        nm.style.display = "inline-block";
+        tmp.appendChild(nm);
+        if(i > defaultIdeas.length - 1 ){
+            let but = document.createElement("button");
+            // but.id = IdeasArray[i];
+            but.type = "button";
+            but.className = "btn btn-danger";
+            but.setAttribute("onclick",`Delete(`+`'`+`${IdeasArray[i]}`+`')`);
+            but.innerHTML =  "X";
+            but.style.marginLeft = "1rem";
+            but.style.display = "inline-block";
+            but.style.paddingLeft = "1rem";
+            but.style.paddingRight = "1rem";
+            but.style.paddingTop = "0rem";
+            but.style.paddingBottom = "0rem";
+            tmp.appendChild(but);
+        }
 
-    for (var i = 0; i < rowsToRemove.length; i++) {
-        // Delete the row.
-        removeIdea(rowsToRemove[i].value);
+        list.appendChild(tmp);
     }
 }
 
-function toggleSelection(checkbox) {
-    // Get our rows.
-    var rowsToSelect = document.querySelectorAll('input[name=select-row]');
+let addIdea = document.getElementById("submit");
 
-    for (var i = 0; i < rowsToSelect.length; i++) {
-        // Check or uncheck boxes if the 'master' checkbox is checked.
-        rowsToSelect[i].checked = checkbox.checked;
+addIdea.onclick = async() => {
+    let userIdea = document.getElementById("htmlIdea").value;
+    for(let i=0; i < IdeasArray.length ; i++){
+        if(IdeasArray[i] == userIdea){
+            alert("Idea already listed");
+            return;
+        }
     }
+    IdeasArray.push(userIdea);
+    let tmp = document.createElement("div");
+    tmp.id = "added_idea";
+    let nm = document.createElement("p");
+    nm.id = "added_idea_text";
+    nm.innerHTML = IdeasArray[IdeasArray.length - 1];
+    nm.style.display = "inline-block";
+    tmp.appendChild(nm);
+    let but = document.createElement("button");
+    but.id = "added_idea_delete";
+    but.type = "button";
+    but.className = "btn btn-danger";
+    but.setAttribute("onclick",`Delete(`+`'`+`${IdeasArray[IdeasArray.length - 1]}`+`')`);
+    but.innerHTML = "X";
+    but.style.marginLeft = "1rem";
+    but.style.display = "inline-block";
+    but.style.paddingLeft = "1rem";
+    but.style.paddingRight = "1rem";
+    but.style.paddingTop = "0rem";
+    but.style.paddingBottom = "0rem";
+    tmp.appendChild(but);
+    list.appendChild(tmp);
+    localStorage.setItem("Ideas", JSON.stringify(IdeasArray));
+
 }
 
-
-
+init();
