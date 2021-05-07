@@ -92,7 +92,7 @@ label #cancel{
   margin-left: 25rem;
 }
 section{
-  background: url('https://static.vecteezy.com/system/resources/previews/001/311/897/large_2x/alarm-clock-and-coffee-beans-free-photo.jpg') no-repeat;
+  background: url('../images/clock_coffee.jpg') no-repeat;
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -221,4 +221,40 @@ section{
     height: 2.5rem;
     background: #4CAF50;
     cursor: pointer;
+  }
+
+  /* //////////////////////////////////// */
+
+  .btn{
+    color: #fff;
+    border: none;
+    margin: 2rem;
+    padding: 2rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    cursor: pointer;
+    border-radius: .5rem;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    outline: none;
+  }
+
+  .btn-success{
+    background: #03D29F;
+    box-shadow: 0 0 2.5rem #03D29F;
+  }
+  
+  .btn-success:hover{
+    box-shadow: 0 0 .5rem #03D29F,
+                0 0 2.5rem #03D29F,
+                0 0 5rem #03D29F,
+                0 0 10rem #03D29F;
+  }
+
+  #submitBtn {
+    position: relative;
+    top: 30rem;
+    left: 15rem;
   }
