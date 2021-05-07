@@ -1,4 +1,4 @@
-const { ipcRenderer, remote } = require("electron")
+const { ipcRenderer } = require("electron")
 
 const skipBtn = document.getElementById("skipBtn")
 skipBtn.disabled = false;
@@ -14,7 +14,19 @@ currtotallongbreak = currtotallongbreak +1;
 localStorage.setItem('currtotallongbreak',currtotallongbreak);
 
 skipBtn.style.display = "block";
+var strict_flg = false;
+if (localStorage.getItem('strict')) {
+    let strict_tmp = localStorage.getItem('strict');
+    if (strict_tmp === "true") {
+        strict_flg = true;
+    } else {
+        strict_flg = false;
+    }
+}
 
+if (strict_flg === true) {
+    skipBtn.style.display = "none";
+}
 
 function randomidea() {
     let defaultIdeas = ["Go grab a glass of water.",
@@ -77,7 +89,7 @@ function MusicClicked() {
         if (long_dur_str) {
             long_dur = parseInt(long_dur_str);
         }
-        var fadePoint = (long_dur * 1000 * 60) - 5000;
+        var fadePoint = (long_dur*1000*60)-5000;
 
         var fadeAudio = setInterval(function() {
             // console.log(sound.volume);
@@ -102,5 +114,14 @@ let idea = randomidea();
 msg.innerHTML = idea;
 
 skipBtn.addEventListener('click', () => {
+    skipBtn.disabled = true;
+    skipBtn.style.display = 'none';
+    let long_skip_num = 0;
+    if (localStorage.getItem('long_skipped')) {
+        let long_skip_tmp = localStorage.getItem('long_skipped');
+        long_skip_num = parseInt(long_skip_tmp);
+    }
+    long_skip_num = long_skip_num + 1;
+    localStorage.setItem('long_skipped', long_skip_num);
     ipcRenderer.send('Break-has-been-skipped')
 })
