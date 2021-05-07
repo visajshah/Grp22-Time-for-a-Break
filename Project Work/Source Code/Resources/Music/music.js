@@ -21,6 +21,24 @@ if (arr2Path === null) {
     arr2Path = arrPath;
 }
 
+var list = document.getElementById('music');
+
+function Delete(index) {
+    if (index == 0) {
+        alert('YOU CANNOT REMOVE THE DEFAULT FILE');
+        return;
+    } else {
+        // console.log(fileName);
+        // console.log(arr2Path[fileName]);
+        list.removeChild(list.childNodes[index]);
+
+        arr2.splice(index, 1);
+        arr2Path.splice(index, 1);
+        localStorage.setItem('arr', JSON.stringify(arr2));
+        localStorage.setItem('arrPath', JSON.stringify(arr2Path));
+        mainWindow.reload();
+    }
+}
 
 function showMusic() {
     for (let i = 0; i < arr2.length; i++) {
@@ -40,7 +58,29 @@ function showMusic() {
         temp.appendChild(temp1);
         tmp.appendChild(temp);
 
-        document.getElementsByTagName('div')[1].appendChild(tmp);
+        let br = document.createElement('br');
+        tmp.appendChild(br);
+        let but = document.createElement('button');
+        but.id = arr2[i];
+        but.type = 'button';
+        but.className = 'btn btn-danger';
+        but.setAttribute('onclick', `Delete(${i})`);
+        but.innerHTML = 'DELETE';
+        tmp.appendChild(but);
+
+        if (i != 0) {
+            let br = document.createElement('br');
+            tmp.appendChild(br);
+            let but = document.createElement('button');
+            but.id = arr2[i];
+            but.type = 'button';
+            but.className = 'btn btn-danger';
+            but.setAttribute('onclick', `Delete(${i})`);
+            but.innerHTML = 'DELETE';
+            tmp.appendChild(but);
+        }
+
+        document.getElementsByTagName('div')[0].appendChild(tmp);
     }
 }
 
@@ -84,14 +124,21 @@ selectFile.onclick = async() => {
         temp.appendChild(temp1);
         tmp.appendChild(temp);
 
+        let but = document.createElement('button');
+        but.id = arr2[arr2.length - 1];
+        but.type = 'button';
+        but.className = 'btn btn-danger';
+        but.setAttribute('onclick', `Delete(${arr2[arr2.length - 1]})`);
+        but.innerHTML = 'DELETE';
+        tmp.appendChild(but);
 
-        document.getElementsByTagName('div')[1].appendChild(tmp);
+        document.getElementsByTagName('div')[0].appendChild(tmp);
 
 
         localStorage.setItem('arr', JSON.stringify(arr2));
         localStorage.setItem('arrPath', JSON.stringify(arr2Path));
 
-        // mainWindow.reload();
+        mainWindow.reload();
     }
 }
 
