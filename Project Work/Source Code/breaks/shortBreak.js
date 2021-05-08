@@ -50,6 +50,7 @@ function randomidea() {
 }
 
 function MusicClicked() {
+    document.getElementById("Music").disabled = true;
     let musicStirng = localStorage.getItem('arr');
     let musicArray = JSON.parse(musicStirng);
 
