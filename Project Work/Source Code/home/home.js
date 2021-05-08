@@ -79,7 +79,7 @@ endBtn.addEventListener('click', () => {
         prev_totallongbreak = parseInt(localStorage.getItem('currtotallongbreak'));
     }
 
-    console.log(prev_endSession,prev_long_skipped,prev_short_skipped,prev_startSession);
+    
     localStorage.setItem('prev_short_skipped',prev_short_skipped);
     localStorage.setItem('prev_long_skipped', prev_long_skipped);
     localStorage.setItem('prev_starttime',prev_startSession);

@@ -87,7 +87,7 @@ app.on('ready', () => {
 
             worker.on('closed',async ()=>{
 
-                console.log("worker closing");
+                
                     await localStorage.setItem('running_session',false);
                     
                     let prev_short_skipped = 0;
@@ -155,7 +155,7 @@ app.on('ready', () => {
             worker.webContents.send('Break-skipped-Main-to-worker');
         })
         ipcMain.on('your short break ends', ()=>{
-            console.log("Window termination proc has been arrived in main");
+            
             if (breakWin) {
                 breakWin.close()
                 breakWin = null
@@ -194,13 +194,13 @@ app.on('ready', () => {
     })
   
     powerMonitor.on('suspend', () => {
-        console.log('The system is going to sleep');
+        
         worker.close()
         // tray.destroy()
     });
     
     powerMonitor.on('lock-screen', () => {
-        console.log('The system is about to be locked');
+        
         lockScreen = 0;
         worker.webContents.send('system-lock');
 
@@ -210,7 +210,7 @@ app.on('ready', () => {
             worker.close()
             worker = null
         }
-        console.log("storing-is-done-for-lockscreen");
+        
         // tray.destroy()
     });
 })
@@ -221,7 +221,7 @@ ipcMain.on('message-from-scheduler',(event,arg)=>{
 });
 
 ipcMain.on('settings has been changed to Main',(event)=>{
-    console.log("updated settings has arrived in main");
+    
     if (worker) {
         worker.webContents.send('settings-has-been-changed-to-worker');
     }
@@ -235,7 +235,7 @@ ipcMain.on('message-on-music-channel',(event,arg)=>{
         }, ],
     }).then((results)=>{
         if (results.filePaths[0] === undefined) {
-            console.log('File undefined');
+            
         } else {
             saveFile(results);
         }
@@ -254,7 +254,7 @@ async function saveFile(results){
             if (arr2Path === null) {
                 arr2Path = ['Audio.mp3'];
             }
-            console.log('File Defined');
+            
     
             var fileName = results.filePaths[0].replace(/^.*[\\\/]/, '');
             var filePath = results.filePaths[0].replace(/\\/g,'/');

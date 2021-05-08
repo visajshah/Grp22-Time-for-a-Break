@@ -54,7 +54,7 @@ function sendItem()
         shortfrequency ,
         longfrequency 
     }
-    console.log(data);
+    
     localStorage.setItem('shortfrequency' , shortfrequency);
     localStorage.setItem('shortduration' , shortduration);
     localStorage.setItem('longduration' , longduration);

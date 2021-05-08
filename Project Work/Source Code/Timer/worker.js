@@ -25,8 +25,8 @@ function updateSetting() {
         var notifi_tmp = window.localStorage.getItem('notifi');    
         if(notifi_tmp)
         {
-            console.log("condition",notifi_tmp === "true");
-            console.log(notifi_tmp,typeof(notifi_tmp))
+            
+            
             if(notifi_tmp === "true")
             {
                 notifi_flg = true;
@@ -52,7 +52,7 @@ function updateSetting() {
 }
 
 function sendMessage(message) {
-    console.log("type of strict flg =>", typeof(strict_flg), strict_flg);
+    
 	ipcRenderer.send(message,strict_flg);
 }
 
@@ -65,19 +65,19 @@ function mytimer(message, duration) {
     let notif_done = false, terminated = false;
     skip=0;
 
-    console.log("From Timmer")
-    console.log(startTime,endTime,duration,t1,t2);
+    
+    
 
     return new Promise((resolve) => {
         let tmp = setInterval(()=>{
             let notification;
                 if (Date.now()>=endTime-t1 && flg1 && !notif_done)
                 {
-                    console.log("notification start")
+                    
                     // let msg = "Start Notif";
                     notif_done = true;
                     // resolve(sendMessage(msg));
-                    console.log("notifiction timer flag",notifi_flg);
+                    
                     if (notifi_flg) {
                         notification = new Notification('Break Reminder', {
                             body: 'Your Next break will start in 5 seconds',
@@ -108,7 +108,7 @@ function updateSchedule()
     if(localStorage.getItem('shortfrequency'))
     {
         shortfrequency =parseInt(localStorage.getItem('shortfrequency'));  
-        console.log("shortfrequency",typeof(shortfrequency) , shortfrequency);
+        
     }
     else
     {
@@ -142,7 +142,7 @@ function updateSchedule()
 
 // Timer function which generate one long break after every two short break
 async function createTimer() {
-    console.log("Timer Starts *******************************************************")
+    
 
     // Set duration and frequency value from local storage 
     updateSchedule();   
@@ -157,7 +157,7 @@ async function createTimer() {
             break;
         }
 
-        console.log("first");
+        
 		await mytimer('your short break ends', shortduration * micTosec * secToMin);
         if(checkForUpdate())
         {
@@ -165,7 +165,7 @@ async function createTimer() {
             break;
         }
 
-        console.log("second");
+        
 
 		await mytimer('your short break starts', shortfrequency * micTosec * secToMin);
         if(checkForUpdate())
@@ -175,7 +175,7 @@ async function createTimer() {
             break;
         }
 
-        console.log("fourth");
+        
 
 
 		await mytimer('your short break ends', shortduration * micTosec * secToMin);
@@ -203,7 +203,7 @@ async function createTimer() {
 }
 ipcRenderer.on('Break-skipped-Main-to-worker', ()=>{
     // breakWin.hide()
-    console.log("from main to worker");
+    
     noOfSkips = noOfSkips + 1; 
     skip = 1;
 })

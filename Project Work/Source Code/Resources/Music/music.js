@@ -12,7 +12,7 @@ if (arr2 === null) {
 let arrPath = ['Audio.mp3'];
 let arr1Path = localStorage.getItem('arrPath');
 let arr2Path = JSON.parse(arr1Path);
-console.log(arr2Path);
+
 if (arr2Path === null) {
     arr2Path = arrPath;
 }
@@ -27,7 +27,7 @@ function Delete(value) {
             break;
         }
     }
-    console.log(list);
+    
     if (index !== -1) {
         list.removeChild(list.childNodes[index]);
 
