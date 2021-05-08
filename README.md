@@ -4,18 +4,23 @@ Time for a Break is a desktop application that sends reminders at regular interv
 
 ## Installation
 
-* Clone the Repository by executing the below command
+- Clone the Repository by executing the below command
+
 ```bash
 git clone https://github.com/visajshah/Grp22-Time-for-a-Break.git
 
 ```
-* You first need to download node.js from [here](https://nodejs.org/en/download/)
-* then run the following command on the terminal to download all dependencies  
+
+- You first need to download node.js from [here](https://nodejs.org/en/download/)
+- then run the following command on the terminal to download all dependencies
+
 ```bash
 cd '.\Grp22-Time-for-a-Break\Project Work\Source Code\'
 npm install
 ```
-* Then you can run the application by executing below command on the local machine. 
+
+- Then you can run the application by executing below command on the local machine.
+
 ```bash
 npm start
 ```
