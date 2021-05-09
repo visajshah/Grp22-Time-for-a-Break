@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Yatra+One&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Yatra+One&display=swap");
 
-*{
+* {
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
 }
-html{
-    font-size: 52.5%;
+html {
+  font-size: 52.5%;
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .sidebar {
   position: fixed;
@@ -19,19 +19,19 @@ body {
   width: 25rem;
   height: 100%;
   background: #042331;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .sidebar header {
   font-size: 3rem;
   color: white;
   line-height: 7rem;
-  text-align:left;
+  text-align: left;
   padding: 2rem;
   padding-left: 4rem;
   background: #063146;
   user-select: none;
 }
-.sidebar ul a{
+.sidebar ul a {
   display: block;
   height: 100%;
   width: 100%;
@@ -41,146 +41,139 @@ body {
   padding-left: 4rem;
   padding-top: 2rem;
   box-sizing: border-box;
-  border-bottom: .1rem solid black;
-  border-top: .1rem solid rgba(255,255,255,.1);
-  transition: .4s;
+  border-bottom: 0.1rem solid black;
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.1);
+  transition: 0.4s;
 }
-ul li:hover a{
+ul li:hover a {
   padding-left: 5rem;
 }
-.sidebar ul a i{
+.sidebar ul a i {
   margin-right: 1.6rem;
 }
-#check{
+#check {
   display: none;
 }
-label #btn,label #cancel{
+label #btn,
+label #cancel {
   position: absolute;
   background: #042331;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   cursor: pointer;
 }
-label #btn{
+label #btn {
   left: 4rem;
   top: 2.5rem;
   font-size: 3.5rem;
   color: white;
-  padding: .6rem 1.2rem;
-  transition: all .5s;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.5s;
 }
-label #cancel{
+label #cancel {
   z-index: 1111;
   left: -19.5rem;
   top: 1.7rem;
   font-size: 3rem;
   color: #0a5275;
-  padding: .4rem .9rem;
-  transition: all .5s ease;
+  padding: 0.4rem 0.9rem;
+  transition: all 0.5s ease;
 }
-#check:checked ~ .sidebar{
+#check:checked ~ .sidebar {
   left: 0;
 }
-#check:checked ~ label #btn{
+#check:checked ~ label #btn {
   left: 25rem;
   opacity: 0;
   pointer-events: none;
 }
-#check:checked ~ label #cancel{
+#check:checked ~ label #cancel {
   left: 19.5rem;
 }
-#check:checked ~ section{
+#check:checked ~ section {
   margin-left: 25rem;
 }
-section{
-  background: url('https://static.vecteezy.com/system/resources/previews/001/311/897/large_2x/alarm-clock-and-coffee-beans-free-photo.jpg') no-repeat;
+section {
+  background: url("https://static.vecteezy.com/system/resources/previews/001/311/897/large_2x/alarm-clock-and-coffee-beans-free-photo.jpg")
+    no-repeat;
   background-position: center;
   background-size: cover;
   height: 100vh;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
-@media(max-width: 998px) {
-    html{
-        font-size: 40%;
-    }
+@media (max-width: 998px) {
+  html {
+    font-size: 40%;
+  }
 }
 
-@media(max-width: 768px) {
-    html{
-        font-size: 35%;
-    }
+@media (max-width: 768px) {
+  html {
+    font-size: 35%;
+  }
 }
 /********************************************/
 .box {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    left: 10rem;
-    top: 10rem;
-    width: 30%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 10rem;
+  top: 10rem;
+  width: 30%;
 }
 
-.btn{
-    color: #fff;
-    border: none;
-    margin: 2rem;
-    padding: 2rem 3rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .4rem;
-    cursor: pointer;
-    border-radius: .5rem;
-    transition: 0.5s;
-    transition-property: box-shadow;
-    outline: none;
-  }
-  
-  .btn-primary{
-    background: #50A7FF;
-    box-shadow: 0 0 2.5rem #50A7FF;
-  }
-  
-  .btn-primary:hover{
-    box-shadow: 0 0 .5rem #50A7FF,
-                0 0 2.5rem #50A7FF,
-                0 0 5rem #50A7FF,
-                0 0 10rem #50A7FF;
-  }
-  
-  .btn-success{
-    background: #03D29F;
-    box-shadow: 0 0 2.5rem #03D29F;
-  }
-  
-  .btn-success:hover{
-    box-shadow: 0 0 .5rem #03D29F,
-                0 0 2.5rem #03D29F,
-                0 0 5rem #03D29F,
-                0 0 10rem #03D29F;
-  }
-  
-  .btn-danger{
-    background: #FF7675;
-    box-shadow: 0 0 2.5rem #FF7675;
-  }
-  
-  .btn-danger:hover{
-    box-shadow: 0 0 .5rem #FF7675,
-                0 0 2.5rem #FF7675,
-                0 0 5rem #FF7675,
-                0 0 10rem #FF7675;
-  }
-  
-  .btn-warning{
-    background: #F0DF51;
-    box-shadow: 0 0 2.5rem #F0DF51;
-  }
-  
-  .btn-warning:hover{
-    box-shadow: 0 0 .5rem #F0DF51,
-                0 0 2.5rem #F0DF51,
-                0 0 5rem #F0DF51,
-                0 0 10rem #F0DF51;
-  }
-       
+.btn {
+  color: #fff;
+  border: none;
+  margin: 2rem;
+  padding: 2rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  outline: none;
+}
+
+.btn-primary {
+  background: #50a7ff;
+  box-shadow: 0 0 2.5rem #50a7ff;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 0.5rem #50a7ff, 0 0 2.5rem #50a7ff, 0 0 5rem #50a7ff,
+    0 0 10rem #50a7ff;
+}
+
+.btn-success {
+  background: #03d29f;
+  box-shadow: 0 0 2.5rem #03d29f;
+}
+
+.btn-success:hover {
+  box-shadow: 0 0 0.5rem #03d29f, 0 0 2.5rem #03d29f, 0 0 5rem #03d29f,
+    0 0 10rem #03d29f;
+}
+
+.btn-danger {
+  background: #ff7675;
+  box-shadow: 0 0 2.5rem #ff7675;
+}
+
+.btn-danger:hover {
+  box-shadow: 0 0 0.5rem #ff7675, 0 0 2.5rem #ff7675, 0 0 5rem #ff7675,
+    0 0 10rem #ff7675;
+}
+
+.btn-warning {
+  background: #f0df51;
+  box-shadow: 0 0 2.5rem #f0df51;
+}
+
+.btn-warning:hover {
+  box-shadow: 0 0 0.5rem #f0df51, 0 0 2.5rem #f0df51, 0 0 5rem #f0df51,
+    0 0 10rem #f0df51;
+}
