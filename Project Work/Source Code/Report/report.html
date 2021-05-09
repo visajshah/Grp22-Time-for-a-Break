@@ -1,71 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="report.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+  </head>
 
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="report.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-</head>
-
-<body>
-    <input type="checkbox" id="check">
+  <body>
+    <input type="checkbox" id="check" />
     <label for="check">
       <i class="fas fa-bars" id="btn"></i>
       <i class="fas fa-times" id="cancel"></i>
     </label>
     <div class="sidebar">
-        <header>Time App</header>
-        <ul>
-            <li><a href="../Schedule/schedule.html"><i class="fas fa-clock"></i>Schedule</a></li>
-            <li><a href="../Resources/Music/music.html"><i class="fas fa-music"></i>Music</a></li>
-            <li><a href="../Resources/Idea/idea.html"><i class="fas fa-pen-nib"></i>Ideas</a></li>
-            <li><a href="../settings/settings.html"><i class="fas fa-cog"></i>Settings</a></li>
-            <li><a href="report.html"><i class="fas fa-calendar-week"></i>Reports</a></li>
-            <li><a href="../About/About.html"><i class="far fa-question-circle"></i>Instructions</a></li>
-            <li><a href="../home/home.html"><i class="fas fa-chevron-circle-left"></i>Home</a></li>
-        </ul>
+      <header>Time App</header>
+      <ul>
+        <li>
+          <a href="../Schedule/schedule.html"
+            ><i class="fas fa-clock"></i>Schedule</a
+          >
+        </li>
+        <li>
+          <a href="../Resources/Music/music.html"
+            ><i class="fas fa-music"></i>Music</a
+          >
+        </li>
+        <li>
+          <a href="../Resources/Idea/idea.html"
+            ><i class="fas fa-pen-nib"></i>Ideas</a
+          >
+        </li>
+        <li>
+          <a href="../settings/settings.html"
+            ><i class="fas fa-cog"></i>Settings</a
+          >
+        </li>
+        <li>
+          <a href="report.html"><i class="fas fa-calendar-week"></i>Reports</a>
+        </li>
+        <li>
+          <a href="../About/About.html"
+            ><i class="far fa-question-circle"></i>Instructions</a
+          >
+        </li>
+        <li>
+          <a href="../home/home.html"
+            ><i class="fas fa-chevron-circle-left"></i>Home</a
+          >
+        </li>
+      </ul>
     </div>
 
     <section>
-        <form class="box1" name="scheduleForm" onsubmit="sendItem(); return false">
-            <div class="report_box">
-                <div class="container">
-                    <h2 style="margin-left: 2.5rem; font-weight: 800; font-size: 4rem; margin-bottom: 3.0rem;">Previous Session's Report</h2>
-                </div>
-                <div class="container">
-                    <label for="longfrequency">Total duration of session : </label>
-                    <label id='addTxt1'></label>
+      <form
+        class="box1"
+        name="scheduleForm"
+        onsubmit="sendItem(); return false"
+      >
+        <div class="report_box">
+          <div class="container">
+            <h2
+              style="
+                margin-left: 2.5rem;
+                font-weight: 800;
+                font-size: 4rem;
+                margin-bottom: 3rem;
+              "
+            >
+              Previous Session's Report
+            </h2>
+          </div>
+          <div class="container">
+            <label for="longfrequency">Total duration of session : </label>
+            <label id="addTxt1"></label>
+          </div>
+          <div class="container">
+            <label for="shortduration">short-breaks skipped : </label>
+            <label id="addTxt2"></label>
+          </div>
+          <div class="container">
+            <label for="shortfrequency">short-breaks attended : </label>
+            <label id="addTxt3"></label>
+          </div>
+          <div class="container">
+            <label for="longduration">long-breaks skipped : </label>
+            <!-- <input type="text" id="addTxt4" style="width: 50px;height: 30px; text-align: center;"> -->
+            <label id="addTxt4"></label>
+          </div>
+          <div class="container">
+            <label for="longfrequency">long-breaks attended : </label>
+            <label id="addTxt5"></label>
+          </div>
 
-                </div>
-                <div class="container">
-                    <label for="shortduration">short-breaks skipped : </label>
-                    <label id='addTxt2'></label>
-                </div>
-                <div class="container">
-                    <label for="shortfrequency">short-breaks attended : </label>
-                    <label id='addTxt3'></label>
-                </div>
-                <div class="container">
-                    <label for="longduration">long-breaks skipped : </label>
-                    <!-- <input type="text" id="addTxt4" style="width: 50px;height: 30px; text-align: center;"> -->
-                    <label id='addTxt4'></label>
-                </div>
-                <div class="container">
-                    <label for="longfrequency">long-breaks attended : </label>
-                    <label id='addTxt5'></label>
-                </div>
-
-                <div class="container">
-                    <label for="longfrequency">% of total-break attended : </label>
-                    <label id='addTxt6'></label>
-                </div>
-                <div class="container">
-                    <label id='addTxt7' for="longfrequency"></label>
-                </div>
-            </div>
-        </form>
+          <div class="container">
+            <label for="longfrequency">% of total-break attended : </label>
+            <label id="addTxt6"></label>
+          </div>
+          <div class="container">
+            <label id="addTxt7" for="longfrequency"></label>
+          </div>
+        </div>
+      </form>
     </section>
     <script src="report.js"></script>
-</body>
-
+  </body>
 </html>
