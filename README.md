@@ -2,6 +2,8 @@
 
 Time for a Break is a desktop application that sends reminders at regular intervals to the user to take a short break and relax.
 
+Product Demo video: https://youtu.be/byX791mmijc
+
 ## Installation
 
 - Clone the Repository by executing the below command
